@@ -1,0 +1,2 @@
+[console_scripts]
+llm-tool = ai_agents_01_call_llm.main:main

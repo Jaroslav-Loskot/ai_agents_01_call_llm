@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  llm-tool:
+    build: .
+    image: ai-agents-llm:latest
+    container_name: llm-tool
+    env_file:
+      - .env        # load API keys and model from your .env file
+    stdin_open: true
+    tty: true
+    command: ["What is sqrt(256) + 10 ?", "--trace"]

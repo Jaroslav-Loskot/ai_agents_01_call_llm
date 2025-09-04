@@ -1,0 +1,141 @@
+Metadata-Version: 2.4
+Name: ai_agents_01_call_llm
+Version: 0.1.0
+Summary: LLM API + math tool roundtrip
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: openai>=1.40.0
+Requires-Dist: python-dotenv>=1.0.1
+Dynamic: license-file
+
+# LLM + Tool Orchestration Demo
+
+This is a small Python project that demonstrates how to:
+
+1. Call an **LLM API** (OpenAI).
+2. Let the LLM decide whether to use a **math tool**.
+3. Run the tool safely in Python (`safe_eval`).
+4. Send the tool’s result **back to the LLM** for a clear final answer.
+
+---
+
+## 🚀 Features
+
+* Uses [`uv`](https://github.com/astral-sh/uv) for fast dependency management.
+* Secrets handled via `.env` (never commit your API key).
+* Simple **agent trace mode** (`--trace`) to see each step.
+* Safe arithmetic evaluation (`+ - * / // % ** ()`).
+* Colorized CLI output.
+
+---
+
+## 📦 Setup
+
+### 1. Install `uv`
+
+Windows (PowerShell):
+
+```powershell
+iwr https://astral.sh/uv/install.ps1 -UseBasicParsing | iex
+```
+
+macOS/Linux:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Close & reopen your terminal, then verify:
+
+```bash
+uv --version
+```
+
+---
+
+### 2. Clone & prepare project
+
+```bash
+git clone https://github.com/Jaroslav-Loskot/ai_agents_01_call_llm
+cd ai_agents_01_call_llm
+```
+
+---
+
+### 3. Configure environment
+
+Copy `.env.example` to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env`:
+
+```
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxx
+OPENAI_MODEL=gpt-4o-mini
+```
+
+---
+
+### 4. Create environment & install dependencies
+
+```bash
+uv venv .venv
+uv add openai python-dotenv
+```
+
+---
+
+## 🖥 Usage
+
+### Run with default question
+
+```bash
+uv run python src/main.py
+```
+
+### Custom question
+
+```bash
+uv run python src/main.py "What is (2 + 3*4) / 5 ?"
+```
+
+### Show detailed trace
+
+```bash
+uv run python src/main.py "What is 2**10 ?" --trace
+```
+
+This shows planner decision, tool execution, and final writer output.
+
+---
+
+## 📂 Project Structure
+
+```
+.
+├── src/
+│   ├── __init__.py
+│   └── main.py        # Main orchestration script
+├── pyproject.toml     # Project metadata (uv)
+├── uv.lock            # Locked dependency versions
+├── .env.example       # Example environment file
+├── .gitignore         # Ignore venv and secrets
+├── README.md          # This file
+└── LICENSE
+```
+
+---
+
+## 🛡 Safety
+
+The evaluator explicitly rejects variables, function calls, or anything other than pure numeric arithmetic to prevent code injection.
+
+---
+
+## 📝 License
+
+MIT – feel free to use and modify.

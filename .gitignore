@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+.env.*
+.envrc
+.idea/
+.vscode/
+*.log
+
+# macOS & Linux noise
+.DS_Store
+Thumbs.db

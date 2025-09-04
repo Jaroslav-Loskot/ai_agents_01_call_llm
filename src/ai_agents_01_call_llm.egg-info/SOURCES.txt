@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/ai_agents_01_call_llm/__init__.py
+src/ai_agents_01_call_llm/main.py
+src/ai_agents_01_call_llm.egg-info/PKG-INFO
+src/ai_agents_01_call_llm.egg-info/SOURCES.txt
+src/ai_agents_01_call_llm.egg-info/dependency_links.txt
+src/ai_agents_01_call_llm.egg-info/entry_points.txt
+src/ai_agents_01_call_llm.egg-info/requires.txt
+src/ai_agents_01_call_llm.egg-info/top_level.txt
