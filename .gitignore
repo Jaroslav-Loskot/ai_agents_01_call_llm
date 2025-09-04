@@ -15,3 +15,5 @@ venv/
 # macOS & Linux noise
 .DS_Store
 Thumbs.db
+
+!.env.example
